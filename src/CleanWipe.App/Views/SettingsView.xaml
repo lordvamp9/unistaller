@@ -1,0 +1,66 @@
+<UserControl x:Class="CleanWipe.App.Views.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:CleanWipe.App.ViewModels"
+             d:DataContext="{d:DesignInstance vm:SettingsViewModel}"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             RenderTransformOrigin="0.5,0.5">
+    <UserControl.RenderTransform>
+        <TranslateTransform X="0" />
+    </UserControl.RenderTransform>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource ViewEnter}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid Margin="32,24,32,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Ajustes" Style="{StaticResource DisplayTitle}" />
+
+        <StackPanel Grid.Row="1" Margin="0,22,0,0" MaxWidth="640" HorizontalAlignment="Left">
+            <Border Style="{StaticResource Card}" Margin="0,0,0,12">
+                <StackPanel>
+                    <CheckBox Style="{StaticResource CleanCheckBox}" IsChecked="{Binding Settings.UseRecycleBin}"
+                              Content="Enviar a la Papelera de Reciclaje (modo seguro)" />
+                    <TextBlock Text="En lugar de eliminar directamente, los archivos van a la Papelera para poder recuperarlos."
+                               Style="{StaticResource Caption}" Margin="30,6,0,0" TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}" Margin="0,0,0,12">
+                <StackPanel>
+                    <CheckBox Style="{StaticResource CleanCheckBox}" IsChecked="{Binding Settings.RunNativeUninstaller}"
+                              Content="Ejecutar el desinstalador nativo de Windows primero" />
+                    <TextBlock Text="Recomendado: deja que el programa se desinstale normalmente y luego limpia los rastros."
+                               Style="{StaticResource Caption}" Margin="30,6,0,0" TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{StaticResource Card}">
+                <StackPanel>
+                    <CheckBox Style="{StaticResource CleanCheckBox}" IsChecked="{Binding Settings.CreateRestorePoint}"
+                              Content="Crear punto de restauración antes de limpiar el registro" />
+                    <TextBlock Text="Capa extra de seguridad: permite revertir cambios del sistema si algo sale mal."
+                               Style="{StaticResource Caption}" Margin="30,6,0,0" TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Margin="0,0,0,22">
+            <TextBlock Style="{StaticResource Caption}">
+                <Run Text="CleanWipe v" /><Run Text="{Binding Version, Mode=OneWay}" />
+            </TextBlock>
+            <TextBlock Style="{StaticResource Caption}" Margin="0,2,0,0">
+                <Run Text="Creado por " /><Run Text="{Binding Author, Mode=OneWay}" Foreground="#3D8BFF" />
+            </TextBlock>
+        </StackPanel>
+    </Grid>
+</UserControl>

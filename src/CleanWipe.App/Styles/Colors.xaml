@@ -1,0 +1,43 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- ════════════ Paleta CleanWipe ════════════ -->
+    <Color x:Key="BgPrimaryColor">#0A0D14</Color>
+    <Color x:Key="BgSecondaryColor">#0F1420</Color>
+    <Color x:Key="AccentPrimaryColor">#1E6FFF</Color>
+    <Color x:Key="AccentHoverColor">#3D8BFF</Color>
+    <Color x:Key="AccentSuccessColor">#00C896</Color>
+    <Color x:Key="AccentDangerColor">#FF4757</Color>
+    <Color x:Key="TextPrimaryColor">#E8EEFF</Color>
+    <Color x:Key="TextSecondaryColor">#6B7A99</Color>
+    <Color x:Key="BorderSubtleColor">#1C2333</Color>
+    <Color x:Key="CardHoverColor">#1C2640</Color>
+
+    <!-- Brushes -->
+    <SolidColorBrush x:Key="BgPrimaryBrush" Color="{StaticResource BgPrimaryColor}" />
+    <SolidColorBrush x:Key="BgSecondaryBrush" Color="{StaticResource BgSecondaryColor}" />
+    <SolidColorBrush x:Key="AccentPrimaryBrush" Color="{StaticResource AccentPrimaryColor}" />
+    <SolidColorBrush x:Key="AccentHoverBrush" Color="{StaticResource AccentHoverColor}" />
+    <SolidColorBrush x:Key="AccentSuccessBrush" Color="{StaticResource AccentSuccessColor}" />
+    <SolidColorBrush x:Key="AccentDangerBrush" Color="{StaticResource AccentDangerColor}" />
+    <SolidColorBrush x:Key="TextPrimaryBrush" Color="{StaticResource TextPrimaryColor}" />
+    <SolidColorBrush x:Key="TextSecondaryBrush" Color="{StaticResource TextSecondaryColor}" />
+    <SolidColorBrush x:Key="BorderSubtleBrush" Color="{StaticResource BorderSubtleColor}" />
+    <SolidColorBrush x:Key="CardHoverBrush" Color="{StaticResource CardHoverColor}" />
+
+    <!-- Gradiente de marca azul → teal -->
+    <LinearGradientBrush x:Key="BrandGradientBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{StaticResource AccentPrimaryColor}" Offset="0" />
+        <GradientStop Color="{StaticResource AccentSuccessColor}" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Fondo principal con leve profundidad -->
+    <LinearGradientBrush x:Key="WindowBackgroundBrush" StartPoint="0,0" EndPoint="0.6,1">
+        <GradientStop Color="#0A0D14" Offset="0" />
+        <GradientStop Color="#0B0F1A" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Glow azul reutilizable -->
+    <Color x:Key="GlowColor">#1E6FFF</Color>
+
+</ResourceDictionary>

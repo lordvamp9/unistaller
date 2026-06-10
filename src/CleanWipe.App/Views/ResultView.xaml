@@ -1,0 +1,118 @@
+<UserControl x:Class="CleanWipe.App.Views.ResultView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:CleanWipe.App.ViewModels"
+             d:DataContext="{d:DesignInstance vm:ResultViewModel}"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             RenderTransformOrigin="0.5,0.5">
+    <UserControl.RenderTransform>
+        <TranslateTransform X="0" />
+    </UserControl.RenderTransform>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard Storyboard="{StaticResource ViewEnter}" />
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid Margin="40,28,40,24">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Cabecera de éxito -->
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="0,6,0,0">
+            <Grid Width="96" Height="96" HorizontalAlignment="Center" RenderTransformOrigin="0.5,0.5">
+                <Grid.RenderTransform><ScaleTransform x:Name="successScale" ScaleX="0.8" ScaleY="0.8" /></Grid.RenderTransform>
+                <Grid.Triggers>
+                    <EventTrigger RoutedEvent="Loaded">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetName="successScale" Storyboard.TargetProperty="ScaleX"
+                                                 From="0.4" To="1" Duration="0:0:0.5">
+                                    <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.6" /></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                                <DoubleAnimation Storyboard.TargetName="successScale" Storyboard.TargetProperty="ScaleY"
+                                                 From="0.4" To="1" Duration="0:0:0.5">
+                                    <DoubleAnimation.EasingFunction><BackEase EasingMode="EaseOut" Amplitude="0.6" /></DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Grid.Triggers>
+                <Ellipse Fill="#1500C896" />
+                <Ellipse Width="72" Height="72" Fill="{StaticResource AccentSuccessBrush}">
+                    <Ellipse.Effect><DropShadowEffect Color="#00C896" BlurRadius="40" ShadowDepth="0" Opacity="0.6" /></Ellipse.Effect>
+                </Ellipse>
+                <TextBlock Text="&#xE73E;" FontFamily="Segoe MDL2 Assets" FontSize="34" Foreground="White"
+                           HorizontalAlignment="Center" VerticalAlignment="Center" />
+            </Grid>
+
+            <TextBlock Text="{Binding Title}" Style="{StaticResource DisplayTitle}" FontSize="26"
+                       HorizontalAlignment="Center" Margin="0,18,0,0" TextAlignment="Center" />
+            <TextBlock Text="{Binding Subtitle}" Style="{StaticResource BodySecondary}"
+                       HorizontalAlignment="Center" Margin="0,6,0,0" />
+        </StackPanel>
+
+        <!-- Acordeón de detalles -->
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,22,0,0" MaxWidth="760">
+            <StackPanel Margin="0,0,8,0">
+                <Expander IsExpanded="True" Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,10">
+                    <Expander.Header>
+                        <TextBlock Style="{StaticResource Subtitle}" FontSize="15">
+                            <Run Text="&#x2705; Eliminados (" /><Run Text="{Binding DeletedItems.Count, Mode=OneWay}" /><Run Text=")" />
+                        </TextBlock>
+                    </Expander.Header>
+                    <ItemsControl ItemsSource="{Binding DeletedItems}" Margin="0,6,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,3">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" FontFamily="Segoe MDL2 Assets"
+                                               Text="{Binding Type, Converter={StaticResource TraceIcon}}"
+                                               Foreground="{StaticResource AccentSuccessBrush}" Margin="0,0,10,0" />
+                                    <TextBlock Grid.Column="1" Text="{Binding Path}" Style="{StaticResource MonoPath}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Expander>
+
+                <Expander Foreground="{StaticResource TextPrimaryBrush}" Margin="0,0,0,10"
+                          Visibility="{Binding HasSkipped, Converter={StaticResource BoolToVis}}">
+                    <Expander.Header>
+                        <TextBlock Style="{StaticResource Subtitle}" FontSize="15" Foreground="{StaticResource AccentDangerBrush}">
+                            <Run Text="&#x26A0; Omitidos (" /><Run Text="{Binding SkippedItems.Count, Mode=OneWay}" /><Run Text=")" />
+                        </TextBlock>
+                    </Expander.Header>
+                    <ItemsControl ItemsSource="{Binding SkippedItems}" Margin="0,6,0,0">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,3">
+                                    <TextBlock Text="{Binding Path}" Style="{StaticResource MonoPath}" />
+                                    <TextBlock Text="{Binding SkipReason}" Style="{StaticResource Caption}"
+                                               Foreground="{StaticResource AccentDangerBrush}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Expander>
+            </StackPanel>
+        </ScrollViewer>
+
+        <!-- Acciones -->
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,18,0,0">
+            <TextBlock Text="{Binding SaveStatus}" Style="{StaticResource Caption}" VerticalAlignment="Center"
+                       Margin="0,0,16,0" MaxWidth="280" TextTrimming="CharacterEllipsis" />
+            <Button Content="Guardar reporte" Style="{StaticResource GhostButton}" Command="{Binding SaveReportCommand}" />
+            <Button Style="{StaticResource PrimaryButton}" Margin="12,0,0,0" Command="{Binding BackToHomeCommand}"
+                    Content="Volver al inicio" />
+        </StackPanel>
+    </Grid>
+</UserControl>

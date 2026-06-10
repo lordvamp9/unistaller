@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/CleanWipe.App/CleanWipe.App.csproj" />
+    <Project Path="src/CleanWipe.Core/CleanWipe.Core.csproj" />
+    <Project Path="src/CleanWipe.Tests/CleanWipe.Tests.csproj" />
+  </Folder>
+</Solution>

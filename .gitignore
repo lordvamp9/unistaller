@@ -1,0 +1,69 @@
+# ============================================================================
+#  CleanWipe — .gitignore
+#  Protege tu equipo: NO se sube build output, logs, datos personales,
+#  reportes de limpieza, ni la carpeta de sesión de Claude.
+# ============================================================================
+
+# --- Datos personales / herramientas locales (NUNCA subir) ---
+.claude/
+**/memory/
+*.log
+logs/
+
+# --- Reportes de limpieza generados por la app (pueden contener rutas privadas) ---
+*_report.json
+CleanWipe_*.json
+CleanWipe_*.txt
+
+# --- Build & publish output de .NET ---
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+publish/
+artifacts/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- Archivos de Visual Studio / Rider / VS Code ---
+.vs/
+.vscode/
+.idea/
+*.vspscc
+*.vssscc
+*.DotSettings.user
+
+# --- NuGet ---
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+project.lock.json
+project.fragment.lock.json
+
+# --- Resultados de pruebas / cobertura ---
+[Tt]est[Rr]esult*/
+[Cc]overage*/
+*.coverage
+*.trx
+
+# --- Sistema operativo ---
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# --- Imágenes intermedias del generador de iconos (se regeneran con make-icon.ps1) ---
+assets/icons/icon-16.png
+assets/icons/icon-24.png
+assets/icons/icon-32.png
+assets/icons/icon-48.png
+assets/icons/icon-64.png
+assets/icons/icon-128.png
+assets/icons/_screenshot.png
+
+# --- Binarios sueltos (el .exe final va a Releases, no al repo) ---
+*.exe
+!assets/**/*.exe
