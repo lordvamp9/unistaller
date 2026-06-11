@@ -1,17 +1,19 @@
 <ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!-- ════════════ Paleta CleanWipe ════════════ -->
-    <Color x:Key="BgPrimaryColor">#0A0D14</Color>
-    <Color x:Key="BgSecondaryColor">#0F1420</Color>
+    <!-- ════════════ Paleta CleanWipe — tema blanco "Frutiger Aero" ════════════
+         Blancos translúcidos (liquid glass) sobre un fondo claro con auras de
+         color; acentos azul aero y verde-teal. -->
+    <Color x:Key="BgPrimaryColor">#EFF6FD</Color>
+    <Color x:Key="BgSecondaryColor">#CCFFFFFF</Color>   <!-- tarjetas: blanco translúcido -->
     <Color x:Key="AccentPrimaryColor">#1E6FFF</Color>
     <Color x:Key="AccentHoverColor">#3D8BFF</Color>
-    <Color x:Key="AccentSuccessColor">#00C896</Color>
-    <Color x:Key="AccentDangerColor">#FF4757</Color>
-    <Color x:Key="TextPrimaryColor">#E8EEFF</Color>
-    <Color x:Key="TextSecondaryColor">#6B7A99</Color>
-    <Color x:Key="BorderSubtleColor">#1C2333</Color>
-    <Color x:Key="CardHoverColor">#1C2640</Color>
+    <Color x:Key="AccentSuccessColor">#00A87E</Color>
+    <Color x:Key="AccentDangerColor">#E5484D</Color>
+    <Color x:Key="TextPrimaryColor">#16263F</Color>
+    <Color x:Key="TextSecondaryColor">#5B6E8C</Color>
+    <Color x:Key="BorderSubtleColor">#BFD5EC</Color>
+    <Color x:Key="CardHoverColor">#F2FFFFFF</Color>     <!-- hover: blanco casi opaco -->
 
     <!-- Brushes -->
     <SolidColorBrush x:Key="BgPrimaryBrush" Color="{StaticResource BgPrimaryColor}" />
@@ -25,16 +27,31 @@
     <SolidColorBrush x:Key="BorderSubtleBrush" Color="{StaticResource BorderSubtleColor}" />
     <SolidColorBrush x:Key="CardHoverBrush" Color="{StaticResource CardHoverColor}" />
 
-    <!-- Gradiente de marca azul → teal -->
-    <LinearGradientBrush x:Key="BrandGradientBrush" StartPoint="0,0" EndPoint="1,1">
-        <GradientStop Color="{StaticResource AccentPrimaryColor}" Offset="0" />
-        <GradientStop Color="{StaticResource AccentSuccessColor}" Offset="1" />
+    <!-- Gradiente de marca azul → teal (estilo aero, más luminoso) -->
+    <LinearGradientBrush x:Key="BrandGradientBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#5BC2FF" Offset="0" />
+        <GradientStop Color="#1E6FFF" Offset="0.55" />
+        <GradientStop Color="#0A53D6" Offset="1" />
     </LinearGradientBrush>
 
-    <!-- Fondo principal con leve profundidad -->
-    <LinearGradientBrush x:Key="WindowBackgroundBrush" StartPoint="0,0" EndPoint="0.6,1">
-        <GradientStop Color="#0A0D14" Offset="0" />
-        <GradientStop Color="#0B0F1A" Offset="1" />
+    <!-- Gradiente verde aqua para estados de éxito -->
+    <LinearGradientBrush x:Key="SuccessGradientBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#3BE0B0" Offset="0" />
+        <GradientStop Color="#00A87E" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Fondo principal claro con leve gradiente cielo -->
+    <LinearGradientBrush x:Key="WindowBackgroundBrush" StartPoint="0,0" EndPoint="0.4,1">
+        <GradientStop Color="#FAFDFF" Offset="0" />
+        <GradientStop Color="#E2EFFB" Offset="0.55" />
+        <GradientStop Color="#D3E7F9" Offset="1" />
+    </LinearGradientBrush>
+
+    <!-- Lámina de gloss reutilizable (mitad superior de cristal) -->
+    <LinearGradientBrush x:Key="GlossOverlayBrush" StartPoint="0,0" EndPoint="0,1">
+        <GradientStop Color="#90FFFFFF" Offset="0" />
+        <GradientStop Color="#30FFFFFF" Offset="0.42" />
+        <GradientStop Color="#00FFFFFF" Offset="0.5" />
     </LinearGradientBrush>
 
     <!-- Glow azul reutilizable -->

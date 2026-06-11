@@ -24,4 +24,15 @@ public class InstalledProgram
 
     /// <summary>True para paquetes de Microsoft Store (Appx) que usan otro mecanismo de desinstalación.</summary>
     public bool IsAppxPackage { get; set; }
+
+    /// <summary>
+    /// Tamaño legible con unidad consciente: los valores grandes en MB se muestran
+    /// como GB (1024 MB → "1 GB") y los pequeños permanecen en MB.
+    /// </summary>
+    public string EstimatedSizeReadable => EstimatedSizeMB switch
+    {
+        <= 0 => "—",
+        >= 1024 => $"{EstimatedSizeMB / 1024.0:0.##} GB",
+        _ => $"{EstimatedSizeMB} MB"
+    };
 }

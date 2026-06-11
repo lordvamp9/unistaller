@@ -19,7 +19,8 @@
     <UserControl.Resources>
         <!-- Plantilla de ítem de rastro -->
         <DataTemplate x:Key="TraceItemTemplate">
-            <Border Padding="10,7" Margin="0,2" CornerRadius="8" Background="#0B1018">
+            <Border Padding="10,7" Margin="0,2" CornerRadius="8" Background="#B8FFFFFF"
+                    BorderBrush="#D9FFFFFF" BorderThickness="1">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />

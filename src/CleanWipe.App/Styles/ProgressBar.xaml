@@ -5,7 +5,7 @@
     <Style x:Key="GlowProgressBar" TargetType="ProgressBar">
         <Setter Property="Height" Value="14" />
         <Setter Property="Foreground" Value="{StaticResource AccentPrimaryBrush}" />
-        <Setter Property="Background" Value="#10182B" />
+        <Setter Property="Background" Value="#D9E7F6" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ProgressBar">

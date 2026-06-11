@@ -31,6 +31,13 @@ public partial class MainWindow : Window
             new DoubleAnimation(0.96, 1, TimeSpan.FromMilliseconds(300)) { EasingFunction = ease });
     }
 
+    private void ContentRoot_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        // Recorta el contenido (auras de color incluidas) al rectángulo redondeado de la ventana.
+        ContentRoot.Clip = new RectangleGeometry(
+            new Rect(0, 0, e.NewSize.Width, e.NewSize.Height), 15, 15);
+    }
+
     private void Minimize_Click(object sender, RoutedEventArgs e) => WindowState = WindowState.Minimized;
 
     private void Maximize_Click(object sender, RoutedEventArgs e)

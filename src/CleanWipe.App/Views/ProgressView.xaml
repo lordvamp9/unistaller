@@ -32,9 +32,15 @@
 
         <!-- Porcentaje grande + glow -->
         <Grid Grid.Row="1" Margin="0,26,0,0" HorizontalAlignment="Center">
-            <Ellipse Width="180" Height="180" Fill="#101A2E">
+            <Ellipse Width="180" Height="180" Stroke="#F0FFFFFF" StrokeThickness="2">
+                <Ellipse.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                        <GradientStop Color="#FAFFFFFF" Offset="0" />
+                        <GradientStop Color="#CCEAF4FF" Offset="1" />
+                    </LinearGradientBrush>
+                </Ellipse.Fill>
                 <Ellipse.Effect>
-                    <DropShadowEffect Color="#1E6FFF" BlurRadius="60" ShadowDepth="0" Opacity="0.4" />
+                    <DropShadowEffect Color="#1E6FFF" BlurRadius="60" ShadowDepth="0" Opacity="0.35" />
                 </Ellipse.Effect>
             </Ellipse>
             <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center"

@@ -29,11 +29,15 @@ public class InverseBooleanConverter : IValueConverter
         => value is bool b && !b;
 }
 
-/// <summary>string nulo/vacío → Collapsed; con contenido → Visible.</summary>
+/// <summary>string nulo/vacío → Collapsed; con contenido → Visible. Parameter "invert" invierte.</summary>
 public class StringToVisibilityConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object? parameter, CultureInfo culture)
-        => string.IsNullOrWhiteSpace(value as string) ? Visibility.Collapsed : Visibility.Visible;
+    {
+        bool has = !string.IsNullOrWhiteSpace(value as string);
+        if (parameter as string == "invert") has = !has;
+        return has ? Visibility.Visible : Visibility.Collapsed;
+    }
 
     public object ConvertBack(object value, Type targetType, object? parameter, CultureInfo culture)
         => throw new NotSupportedException();
