@@ -9,5 +9,5 @@ public partial class SettingsViewModel : ObservableObject
     public AppSettings Settings => AppSettings.Current;
 
     public string Version => "1.1.0";
-    public string Author => "vamp9 · Andrés Loyola";
+    public string Author => "vamp9";
 }

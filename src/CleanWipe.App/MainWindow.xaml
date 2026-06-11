@@ -119,7 +119,7 @@
                                 <RadioButton Style="{StaticResource NavButton}" Content="Programas" Tag="&#xE71D;"
                                              GroupName="nav" Command="{Binding GoDashboardCommand}"
                                              IsChecked="{Binding SelectedPage, Converter={StaticResource EqToBool}, ConverterParameter=Dashboard, Mode=OneWay}" />
-                                <RadioButton Style="{StaticResource NavButton}" Content="Huérfanos" Tag="&#xE74C;"
+                                <RadioButton Style="{StaticResource NavButton}" Content="Residuos Huérfanos" Tag="&#xE74C;"
                                              GroupName="nav" Command="{Binding GoOrphansCommand}"
                                              IsChecked="{Binding SelectedPage, Converter={StaticResource EqToBool}, ConverterParameter=Orphans, Mode=OneWay}" />
                                 <RadioButton Style="{StaticResource NavButton}" Content="Ajustes" Tag="&#xE713;"

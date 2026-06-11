@@ -8,7 +8,7 @@
 aplicaciones de usuario (archivos, carpetas, registro, accesos directos, servicios y
 tareas) de forma **segura**, sin tocar componentes del sistema operativo.
 
-Hecho por **vamp9** · Andrés Loyola
+Hecho por **vamp9**
 
 ![.NET](https://img.shields.io/badge/.NET-10-512BD4?logo=dotnet&logoColor=white)
 ![WPF](https://img.shields.io/badge/UI-WPF-1E6FFF)
